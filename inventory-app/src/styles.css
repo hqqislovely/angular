@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+a.navbar-brand > img{
+    height: 4rem;
+    margin: 0 0.3rem 0 0;
+}
+a{
+    margin: 0 0 0 1rem;
+}
