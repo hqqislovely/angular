@@ -14,19 +14,19 @@ export class AppComponent {
       new Product(
         'MYSHOES',
         'Chain Reactions',
-        '/assets/imgs/products/black-shoes.jpg',
+        './assets/imgs/products/black-shoes.jpg',
         ['Women', 'Shoes', 'Aquazzura'],
         907.25),
       new Product(
         'NEATOJACKET',
         'ALEXANDER MCQUEEN',
-        '/assets/imgs/products/white-dress.jpg',
+        './assets/imgs/products/white-dress.jpg',
         ['Women', 'Clothing', 'Dress'],
         2457.56),
       new Product(
         'NICEHAT',
         'Jason',
-        '/assets/imgs/products/white-hat.jpg',
+        './assets/imgs/products/white-hat.jpg',
         ['Women', 'MAISON MICHEL', 'Hats'],
         387.32)
     ];
