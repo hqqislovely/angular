@@ -1,13 +1,4 @@
-<form>
-    <P>
-        {{title +' abc'}}
-    </P>
-    <student-list></student-list>
-    <input type="text" [value]="title" (input)="onInput($event)">
-    <p></p>
-    <input type="button" value="按钮" (click)="onBtnClicked()">
-    <a [href]="url">百度</a>
-
-    <p></p>
-    <img [src]="imgUrl">
-</form>
+<div class="d-flex justify-content-center">
+      <products-list [productsList]="products" (productSelected)="onProductSelected($event)">
+    </products-list>
+</div>

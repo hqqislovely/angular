@@ -2,16 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { StudentList } from './student-list.component';
-import { Student } from './student.component';
+import { productsListComponent } from './products-list';
+import { productDepartmentComponent } from './product-department';
+import { productImageComponent } from './product-image';
+import { productPriceComponent } from './product-price';
+import { productRowComponent } from './product-row';
 
 
 
 @NgModule({
   declarations: [//所以属于该模块的组件，必须在这里申明；若未申明，就不能使用或者使用出错
     AppComponent,
-    StudentList,
-    Student
+    productsListComponent,
+    productDepartmentComponent,
+    productImageComponent,
+    productPriceComponent,
+    productRowComponent
+
   ],
   imports: [//导入其他模块
     BrowserModule

@@ -1,0 +1,3 @@
+<product-row *ngFor='let product of productsList' [product]="product" (click)="onProductClicked(product)"
+      [class.selected]='isSelected(product)'>
+</product-row>

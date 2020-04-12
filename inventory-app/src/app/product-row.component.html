@@ -1,0 +1,17 @@
+<div class="col-3">
+      <product-image [url]="product.imageUrl"></product-image>
+</div>
+<div class="col-7">
+      <div class="product-name">
+           {{product.name}}
+          </div>
+      <div class="description">
+           SKU #{{product.sku}}
+          </div>
+      <div>
+            <product-department [department]="product.department"></product-department>
+    </div>
+</div>
+<div class="col-2 d-flex align-items-center">
+      <product-price [price]="product.price"></product-price>
+</div>

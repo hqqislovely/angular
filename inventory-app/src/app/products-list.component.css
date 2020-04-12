@@ -1,0 +1,8 @@
+.selected {
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    }
+
+prdouct-row{
+    margin: 1rem 0;
+}

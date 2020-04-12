@@ -1,27 +1,41 @@
 import { Component } from '@angular/core';
+import { Product } from './product';
 
 @Component({
-  selector: 'app-root',
+  selector: 'inventory-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string;
-  imgUrl: string;
-  url: string;
+  products: Product[];
 
   constructor() {
-    this.title = 'hellohqq';
-    this.imgUrl = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585818717033&di=586586e4dcc36f682a15af62d1920944&imgtype=0&src=http%3A%2F%2Fimage.huahuibk.com%2Fuploads%2F20190107%2F21%2F1546866811-wczJFfBvDb.jpg';
-    this.url = 'https://www.baidu.com';
+    this.products = [
+      new Product(
+        'MYSHOES',
+        'Chain Reactions',
+        '/assets/imgs/products/black-shoes.jpg',
+        ['Women', 'Shoes', 'Aquazzura'],
+        907.25),
+      new Product(
+        'NEATOJACKET',
+        'ALEXANDER MCQUEEN',
+        '/assets/imgs/products/white-dress.jpg',
+        ['Women', 'Clothing', 'Dress'],
+        2457.56),
+      new Product(
+        'NICEHAT',
+        'Jason',
+        '/assets/imgs/products/white-hat.jpg',
+        ['Women', 'MAISON MICHEL', 'Hats'],
+        387.32)
+    ];
+
   }
 
-  onBtnClicked() {
-    console.log('heiheihei');
+  onProductSelected(product: Product) {
+    console.log('在根组件中，响应产品:' + product.name + '选中事件！！');
   }
 
-  onInput(evt: Event) {
-    this.title = (<HTMLInputElement>evt.target).value;
-  }
 }
 
