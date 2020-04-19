@@ -1,0 +1,110 @@
+<div>
+    <h2 *ngIf="shouldShow">测试是否显示</h2>
+    <input type="button" value="切换" (click)=" onToggle()" class="btn btn-success" style="width: 500px;">
+</div>
+<p></p>
+<div>
+    <input type="number" (value)="score" (input)="onInput($event)" style="width: 500px;">
+    <p *ngIf="score >= 90 && score < 100">优</p>
+    <p *ngIf="score >= 70 && score < 90">良</p>
+    <p *ngIf="score >= 60 && score < 70">及格</p>
+    <p *ngIf="score < 60">差</p>
+</div>
+<div [ngSwitch]="grade()">
+    <p *ngSwitchCase="10">满分</p>
+    <p *ngSwitchCase="9">优</p>
+    <p *ngSwitchCase="7">良</p>
+    <p *ngSwitchCase="6">及格</p>
+    <p *ngSwitchDefault>其他</p>
+</div>
+<p [style.background-color]="'plum'" style="width: 500px;">这里直接采用style属性</p>
+<p [ngStyle]="{'background-color':'plum','color':'white'}" style="width: 500px;">这里采用ngStyle</p>
+<form>
+
+    <div class="form-group">
+        <h3>
+            动态使用ngStyle
+        </h3>
+        <label for="iptColor">颜色</label>
+        <p></p>
+        <input type="text" class="form-control" id="iptColor" aria-describedby="color" placeholder="请输入颜色" #colorinput
+            style="width: 500px;">
+    </div>
+    <div class="form-group">
+        <label for="iptText">字体大小</label>
+        <p></p>
+        <input type="text" class="form-control" id="iptTextSize" aria-describedby="font size" placeholder="请输入字体大小"
+            style="width: 500px;" #fontinput>
+    </div>
+    <a class="btn btn-success" href="#" role="button" (click)="apply(colorinput.value,fontinput.value)"
+        style="width: 500px;">应用设置</a>
+</form>
+<p></p>
+<div>
+    <span [ngStyle]="{color:'plum'}" [style.font-size]="fontSize">
+        梅子色文本
+    </span>
+</div>
+<p></p>
+<div [style.background-color]="color" style="color:white;">
+    {{color}} 背景色
+</div>
+<p></p>
+<div [ngStyle]="{'color': 'white', 'background-color': color, 'font-size': fontSize}">
+    使用ngStyle动态修改 </div>
+<div>
+    <p></p>
+    <h3>使用ngClass</h3>
+    <div [ngClass]="{bordered: isBordered,plum:false,round:true}" style="width: 500px;">有边框</div>
+    <div [ngClass]="classObj" style="width: 500px;">采用JSON对象属性方式</div>
+    <div [ngClass]="{bordered: !isBordered,plum:true,round:false}" style="width: 500px;">无边框</div>
+    <div [ngClass]="['bordered', 'plum', 'round']" style="width: 500px;">采用另外一种方式</div>
+    <p></p>
+    <a class="btn btn-success" href="#" role="button" (click)="toggleBorder()" style="width: 500px;">切换边框</a>
+    <p></p>
+</div>
+<div>
+    <h3>使用ngFor</h3>
+    <ul>  
+        <li *ngFor='let city of cities'>
+            {{city}}
+        </li>
+    </ul>
+    <h4>表格案例</h4>
+    <table class="table" style="width: 500px;">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">序号</th>
+                <th scope="col">名字</th>
+                <th scope="col">年龄</th>
+                <th scope="col">城市</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr *ngFor='let p of people;let i = index'>
+                <th scope="row">{{i + 1}}</th>
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.city}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngFor='let p of peopleByCity'>
+        <h2>{{p.city}}</h2>
+         <table class="table" style="width: 500px;">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">序号</th>
+                    <th scope="col">名字</th>
+                    <th scope="col">年龄</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let p2 of p.people;let i = index'>
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{p2.name}}</td>
+                    <td>{{p2.age}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
