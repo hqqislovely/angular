@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>测试表单</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container ">
+        <form class="container-fluid">
+            <h3 class="mx-auto" style="width: 200px;">用户登录</h3>
+            <p></p>
+            <div class="form-group">
+                <label for="userName">用户名</label>
+                <input type="text" class="form-control is-valid" id="userName" aria-describedby="请输入用户名"
+                    name="userName">
+                <div class="valid-feedback">
+                    用户名格式正确
+                </div>
+                <div class="invalid-feedback">
+                    用户名必须填写
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control is-invalid" id="password" aria-describedby="请输入密码"
+                    name="password">
+                <div class="valid-feedback">
+                    密码填写正确
+                </div>
+                <div class="invalid-feedback">
+                    密码必须大于5位
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">确认</button>
+        </form>
+    </div>
+</body>
+
+</html>
