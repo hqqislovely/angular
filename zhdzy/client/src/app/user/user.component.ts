@@ -116,7 +116,6 @@ export class UserComponent implements OnInit
                     this.reset();
                 });
         }
-        // location.reload();
     }
 
     reset()

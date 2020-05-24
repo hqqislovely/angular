@@ -1,56 +1,98 @@
-<p></p>
-<form class="container">
-  <div class="form-group row align-items-start">
-    <label for="id">学号</label>
-    <input type="number" class="form-control" id="id" placeholder="请输入学号">
-  </div>
-  <div class="form-group row align-items-center">
-    <label for="name">姓名</label>
-    <input type="text" class="form-control" id="name" placeholder="请输入姓名">
-
-  </div>
-  <div class="form-group row align-items-end">
-    <label for="exampleInputPassword1">密码</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="form-group row align-items-end">
-    <button type="submit" class="btn btn-primary btn-lg btn-block">确认</button>
-  </div>
-</form>
-
-
-
-<p></p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="请输入学号">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">查询</button>
-    </div>
-  </div>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <button type="button" class="btn btn-primary">添加学生</button>
-    </tr> 
+<div class="table-responsive">
+  <div class="m-auto" style="width: 75%;">
     <p></p>
-    <tr>
-      <th scope="col">序号</th>
-      <th scope="col">学号</th>
-      <th scope="col">姓名</th>
-      <th scope="col">密码</th>
-      <th scope="col">操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>
-        <button type="button" class="btn btn-success">编辑</button>&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-danger">删除</button>
-      </td>
-    </tr>
-  </tbody>
+    <p></p>
+    <p></p>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="请输入学号" [formControl]='id'>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="search()">查询</button>
+      </div>
+    </div>
+
+    <table class="table table-hover" >
+      <thead>
+        <tr (click)="tianjia()">
+          <button type="button" class="btn btn-primary" (click)="openModal(template1)">添加学生</button>
+          <!-- <button type="button" class="btn btn-primary" (click)="add()"></button> -->
+        </tr>
+        <p></p>
+        <tr>
+          <th scope="col">序号</th>
+          <th scope="col">学号</th>
+          <th scope="col">姓名</th>
+          <th scope="col">成绩</th>
+          <th scope="col">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let user of users$ | async;let i = index' (click)="select(user)">
+          <td>{{i+1}}</td>
+          <td>{{user.id}}</td>
+          <td>{{user.userName}}</td>
+          <td>{{user.chenji}}</td>
+          <td (click)="bianji()">
+            <button type="button" class="btn btn-success" (click)="openModal(template2)">编辑</button>&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-danger" (click)="delete()">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">添加学生</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="myForm" class="container">
+      <div class="form-group row align-items-start">
+        <label for="id">学号</label>
+        <input type="text" class="form-control" id="id" name="id" [formControl]='id'>
+      </div>
+      <div class="form-group row align-items-center">
+        <label for="userName">姓名</label>
+        <input type="text" class="form-control" id="userName" name="userName" [formControl]='userName'>
+      </div>
+      <div class="form-group row align-items-end">
+        <label for="chenji">成绩</label>
+        <input type="text" class="form-control" id="chenji" name="chenji" [formControl]='chenji'>
+      </div>
+      <div class="form-group row align-items-end">
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="tz()">确认</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">修改信息</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="myForm" class="container">
+      <div class="form-group row align-items-start">
+        <label for="id">学号</label>
+        <input type="text" class="form-control" id="id" name="id" [formControl]='id'>
+      </div>
+      <div class="form-group row align-items-center">
+        <label for="userName">姓名</label>
+        <input type="text" class="form-control" id="userName" name="userName" [formControl]='userName'>
+      </div>
+      <div class="form-group row align-items-end">
+        <label for="chenji">成绩</label>
+        <input type="text" class="form-control" id="chenji" name="chenji" [formControl]='chenji'>
+      </div>
+      <div class="form-group row align-items-end">
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="tz()">确认</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

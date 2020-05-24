@@ -11,7 +11,6 @@ import { User } from './user';
 })
 export class SourceComponent implements OnInit
 {
-
     exit: ExitComponent;
     myForm: FormGroup;
     userName: AbstractControl;

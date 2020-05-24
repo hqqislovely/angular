@@ -12,7 +12,7 @@
                      [formControl]="userName" [ngClass]="{'is-invalid':userName.invalid, 'is-valid':userName.valid}">
 
                  <div class="valid-feedback">
-                    密码填写正确
+                    用户名格式正确
                 </div>
                 <div class="invalid-feedback">
                      <span *ngIf="userName.hasError('required')">
@@ -28,13 +28,13 @@
             <div class="form-group">
                 <label for="password">密码</label>
                  <input type="password" class="form-control" id="password" name="password" [formControl]="password"    
-                       [ngClass]="{'is-invalid':password.invalid, 'is-valid':password.valid}">
+                       [ngClass]="{'is-invalid':(password.invalid), 'is-valid':password.valid}">
 
                 <div class="valid-feedback">
-                    密码填写正确
+                    密码格式正确
                 </div>
                 <div class="invalid-feedback">
-                    密码必须大于5位
+                    密码必须大于4位
                 </div>
             </div>
             <div class="form-group form-check">
@@ -44,7 +44,7 @@
             </div>
 
             <button type="submit" class="btn btn-outline-primary btn-block" [disabled]="myForm.invalid"
-                [routerLink]="['/management']" (click)='login()'>登录</button>
+                (click)='login()'>登录</button>
         </form>
     </div>
 </div>

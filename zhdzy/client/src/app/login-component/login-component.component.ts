@@ -25,12 +25,13 @@ export class LoginComponentComponent implements OnInit {
   password: AbstractControl;
   name$: Observable<string>;
   baseUrl = 'http://127.0.0.1:8080/';
+
   constructor(private fb: FormBuilder, private authService: AuthService, private http: HttpClient, private router: Router) {
     // 创建表单
     this.myForm = this.fb.group(
       {
-        'userName': ['aaa', Validators.compose([Validators.required, userNameValidator])],
-        'password': ['sadsad ', Validators.compose([Validators.required, Validators.minLength(5)])]
+        'userName': ['admin', Validators.compose([Validators.required, userNameValidator])],
+        'password': ['admin', Validators.compose([Validators.required, Validators.minLength(4)])]
       }
     );
     // 关联
@@ -43,7 +44,6 @@ export class LoginComponentComponent implements OnInit {
     });
 
 
-
   }
 
   onSubmit(value: any) {
@@ -52,11 +52,16 @@ export class LoginComponentComponent implements OnInit {
   ngOnInit(): void {
   }
   login() {
-    this.http.post(this.baseUrl + 'check', this.myForm.value).subscribe(
+    this.http.post(this.baseUrl + 'denglu', this.myForm.value).subscribe(
       (val: any) => {
+        console.log(val);
         if (val.succ)
+        {
           this.authService.login();
-        this.router.navigate(['./management']);
+          this.router.navigate(['./management']);
+          
+        }else
+        alert('账号或密码错误');
       });
   }
 }

@@ -2,10 +2,9 @@ import { Menu } from './menu';
 import { Product } from './product';
 
 export const MENUS: Menu[] = [
-    { name: '特性', url: '#' },
-    { name: '企业', url: 'https://v4.bootcss.com' },
-    { name: '支持', url: '#' },
-    { name: '价格', url: '#' },
+    { name: '物联', url: 'https://www.zime.edu.cn/' },
+    { name: '1802', url: 'https://www.zime.edu.cn/' },    
+    { name: '胡逸青', url: 'https://www.zime.edu.cn/' },
 ]
 
 export const PRODUCT: Product[] = [
